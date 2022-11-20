@@ -1,13 +1,15 @@
 package source;
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-public class EtudiantService {
+
+public abstract class EtudiantService implements Connection{
 	
 	
-	boolean inscription (int matricule, String nom, String prenom, String email,String pwd, int id_universite) throws SQLException	
+	boolean inscription (int matricule, String nom, String prenom, String email,String pwd, int id_universite) throws SQLException, ClassNotFoundException	
 	{
 		EtudiantRepository StudRep= new EtudiantRepository();
 	    UniversiteRepository UnivRep= new UniversiteRepository();
@@ -43,7 +45,7 @@ public class EtudiantService {
 	     }                           
 	     
 		 StudRep.add(stud);
-		 System.out.println("Log: Fin de l'opï¿½ration d'ajout de l'ï¿½tudiant avec matricule "+matricule);
+		 System.out.println("Log: Fin de l'opération d'ajout de l'étudiant avec matricule "+matricule);
 		 return true;
 	    
 		

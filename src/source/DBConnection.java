@@ -3,7 +3,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBConnection {
+public abstract class DBConnection implements Connection{
 	   
 	
 		String BDD = "tp02al";
@@ -14,17 +14,25 @@ public class DBConnection {
 	    private static DBConnection instance;
 
 	   
-	    private DBConnection() throws SQLException, ClassNotFoundException {
+	    public DBConnection() throws SQLException{
 	    	this.conn = DriverManager.getConnection(url, user,passwd);
 		}
 	    
 	    public Connection getConn() {
+	    	if (conn == null) {
+	    		String url = "jdbc:mysql://localhost:3306/" + BDD;
+	    	try {
+	    		conn = DriverManager.getConnection(url, user, passwd);
+	    	}catch(SQLException e) {
+	    		e.printStackTrace();
+	    	}
+	    	}
 			return conn;
 		}
 	    
-	    public static DBConnection getInstance() throws SQLException, ClassNotFoundException{
+	    public static DBConnection getInstance() throws SQLException{
 	    	if(instance == null) {
-	    		instance = new DBConnection();
+	    		DBConnection instance;
 	    	}else {
 	    		return instance;
 	    	}
