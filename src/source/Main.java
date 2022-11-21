@@ -1,13 +1,14 @@
 package source;
 import java.sql.SQLException;
 
-public class MainApp {
+public class Main {
 
+	@SuppressWarnings("null")
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-
-		EtudiantService serv = null;
+		EtudiantService serv = null ;
+		
 		try {
 			serv.inscription(2, "Titri", "Hadyl", "titrihadyl@gmail.com", "", 5);
 			
@@ -15,6 +16,7 @@ public class MainApp {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 
 }
