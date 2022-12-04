@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class EtudiantRepository {
 	
 	
-	void add(Etudiant E) throws SQLException
+	public void add(Etudiant E) throws SQLException
 	{
 
 		DBConnection BD = null;

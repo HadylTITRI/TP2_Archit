@@ -1,12 +1,8 @@
 package source;
-import java.sql.Connection;
 
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 
-public abstract class EtudiantService implements Connection{
+public abstract class EtudiantService implements Conection, IJournal{
 	
 	
 	boolean inscription (int matricule, String nom, String prenom, String email,String pwd, int id_universite) throws SQLException, ClassNotFoundException	

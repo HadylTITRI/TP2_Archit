@@ -9,15 +9,21 @@ import java.sql.Statement;
 public class UniversiteRepository {
 	
 	
-	Universite GetById(int universityId) throws SQLException, ClassNotFoundException {
+	public Universite GetById(int universityId) throws SQLException{
 		
 		DBConnection BD = null;
 		Connection connect=BD.getConn(); 
-		Statement stmt = connect.createStatement();
+		Statement stmt;
+			stmt = connect.createStatement();
+			// TODO Auto-generated catch block
+		
 		System.out.println("LogBD : début recherche de id université dans la base de ldonnée");
 		
 		String sql = "select * from universite where id_universite="+ universityId;
-		ResultSet rs = stmt.executeQuery(sql);
+		ResultSet rs;
+			rs = stmt.executeQuery(sql);
+			// TODO Auto-generated catch block
+		
 		rs.next();	
 		TypePackage p=TypePackage.valueOf(rs.getString(3));
 		Universite u = new Universite (rs.getInt(1),rs.getString(2),p);
